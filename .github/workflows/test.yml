@@ -8,5 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Status
-        run: echo "Status = {{ github.event.deployment_status }}"
+        run: echo {{ github.event.deployment_status }}
         
