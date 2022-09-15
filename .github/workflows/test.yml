@@ -32,3 +32,12 @@ jobs:
         env:
           VERCEL_DEPLOYMENT_STATUS: ${{ toJson(github.event) }}
         run: echo $VERCEL_DEPLOYMENT_STATUS
+
+  work:
+    if: ${{ github.event.deployment_status.state == null }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: state
+        env:
+          VERCEL_DEPLOYMENT_STATUS: ${{ toJson(github.event) }}
+        run: echo $VERCEL_DEPLOYMENT_STATUS
