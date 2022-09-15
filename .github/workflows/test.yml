@@ -11,14 +11,8 @@ jobs:
         env:
           VERCEL_DEPLOYMENT_STATUS: ${{ toJson(github.event.deployment_status) }}
           TEST_VAR: true
-        if: $VERCEL_DEPLOYMENT_STATUS.environment == "Production"
-        run: echo $VERCEL_DEPLOYMENT_STATUS
-        if: $VERCEL_DEPLOYMENT_STATUS.environment != "Production"
-        run: echo No need to run tests
         if: $TEST_VAR == true
         run: echo TEST_VAR true
-        if: $TEST_VAR == false
-        run: echo TEST_VAR false
 
   tests from production deployment:
     if: ${{ github.event.action }} == 'deployment_status'
@@ -28,12 +22,5 @@ jobs:
         env:
           VERCEL_DEPLOYMENT_STATUS: ${{ toJson(github.event.deployment_status) }}
           TEST_VAR: false
-        if: $VERCEL_DEPLOYMENT_STATUS.environment == "Production"
-        run: echo $VERCEL_DEPLOYMENT_STATUS
-        if: $VERCEL_DEPLOYMENT_STATUS.environment != "Production"
-        run: echo No need to run tests
-        if: $TEST_VAR == true
-        run: echo TEST_VAR true
         if: $TEST_VAR == false
         run: echo TEST_VAR false
-        
