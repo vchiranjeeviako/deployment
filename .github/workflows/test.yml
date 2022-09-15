@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Status
-      env:
-        VERCEL_DEPLOYMENT_STATUS: ${{ toJson(github.event.deployment_status) }}
-      run: echo ${{ VERCEL_DEPLOYMENT_STATUS }}
+        env:
+          VERCEL_DEPLOYMENT_STATUS: ${{ toJson(github.event.deployment_status) }}
+        run: echo ${{ VERCEL_DEPLOYMENT_STATUS }}
         
