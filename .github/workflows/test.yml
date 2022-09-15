@@ -7,17 +7,17 @@ jobs:
   tests:
     steps:
       - name: Pending
-        if: ${{ deployment_status["state"] == "pending" }}
+        if: ${{ github.event.deployment_status["status"] == "pending" }}
         run: echo "pending"
 
       - name: Success
-        if: ${{ deployment_status["state"] == "success" }}
+        if: ${{ github.event.deployment_status["status"] == "success" }}
         run: echo "success"
 
       - name: Failure
-        if: ${{ deployment_status["state"] == "failure" }}
+        if: ${{ github.event.deployment_status["status"] == "failure" }}
         run: echo "failure"
 
       - name: Error
-        if: ${{ deployment_status["state"] == "error" }}
+        if: ${{ github.event.deployment_status["status"] == "error" }}
         run: echo "error"
