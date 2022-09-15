@@ -3,6 +3,8 @@ name: deployment status test
 on: [workflow_dispatch, deployment_status]
 
 jobs:
+  common:
+    run: echo ${{ github.event.action }}
   tests_from_workflow_dispatch:
     if: ${{ github.event.action }} == 'workflow_dispatch'
     runs-on: ubuntu-latest
