@@ -1,6 +1,9 @@
 name: deployment status test
 
-on: [workflow_dispatch, deployment_status]
+on:
+  workflow_dispatch:
+
+  deployment_status:
 
 jobs:
   # tests_from_workflow_dispatch:
