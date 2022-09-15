@@ -3,7 +3,7 @@ name: deployment status test
 on: [workflow_dispatch, deployment_status]
 
 jobs:
-  tests from workflow dispatch:
+  tests_from_workflow_dispatch:
     if: ${{ github.event.action }} == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
@@ -14,7 +14,7 @@ jobs:
         if: $TEST_VAR == true
         run: echo TEST_VAR true
 
-  tests from production deployment:
+  tests_from_production_deployment:
     if: ${{ github.event.action }} == 'deployment_status'
     runs-on: ubuntu-latest
     steps:
