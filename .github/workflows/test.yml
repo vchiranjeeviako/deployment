@@ -25,6 +25,7 @@ jobs:
   #       if: env.TEST_VAR == false
   #       run: echo TEST_VAR false
   commom:
+    if: ${{ github.event.deployment_status.state == 'success' }} && ${{ github.event.deployment_status.environment == 'Production' }}
     runs-on: ubuntu-latest
     steps:
       - name: state
