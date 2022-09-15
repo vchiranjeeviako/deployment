@@ -7,5 +7,6 @@ jobs:
   tests:
     steps:
       - name: Status
+        if: {{ github.event.deployment_status }}
         run: echo "Status = {{ github.event.deployment_status }}"
         
