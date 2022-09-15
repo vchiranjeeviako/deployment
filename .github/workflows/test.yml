@@ -1,0 +1,22 @@
+name: deployment status test
+
+on:
+  deployment_status
+
+jobs:
+  tests:
+    - name: Pending
+      if: ${{ deployment_status["state"] == "pending" }}
+      run: echo "pending"
+
+    - name: Success
+      if: ${{ deployment_status["state"] == "success" }}
+      run: echo "success"
+
+    - name: Failure
+      if: ${{ deployment_status["state"] == "failure" }}
+      run: echo "failure"
+
+    - name: Error
+      if: ${{ deployment_status["state"] == "error" }}
+      run: echo "error"
