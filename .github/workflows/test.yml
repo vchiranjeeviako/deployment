@@ -5,18 +5,19 @@ on:
 
 jobs:
   tests:
-    - name: Pending
-      if: ${{ deployment_status["state"] == "pending" }}
-      run: echo "pending"
+    steps:
+      - name: Pending
+        if: ${{ deployment_status["state"] == "pending" }}
+        run: echo "pending"
 
-    - name: Success
-      if: ${{ deployment_status["state"] == "success" }}
-      run: echo "success"
+      - name: Success
+        if: ${{ deployment_status["state"] == "success" }}
+        run: echo "success"
 
-    - name: Failure
-      if: ${{ deployment_status["state"] == "failure" }}
-      run: echo "failure"
+      - name: Failure
+        if: ${{ deployment_status["state"] == "failure" }}
+        run: echo "failure"
 
-    - name: Error
-      if: ${{ deployment_status["state"] == "error" }}
-      run: echo "error"
+      - name: Error
+        if: ${{ deployment_status["state"] == "error" }}
+        run: echo "error"
