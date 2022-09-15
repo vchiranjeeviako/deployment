@@ -4,7 +4,7 @@ on: [workflow_dispatch, deployment_status]
 
 jobs:
   tests_from_workflow_dispatch:
-    if: ${{ github.event.workflow_run == 'success' || github.event.workflow_run == 'failure' }}
+    if: ${{ github.event.workflow_run == 'success' }} || ${{ github.event.workflow_run == 'failure' }}
     runs-on: ubuntu-latest
     steps:
       - name: Status
@@ -15,7 +15,7 @@ jobs:
         run: echo TEST_VAR true
 
   tests_from_production_deployment:
-    if: ${{ github.event.deployment_status == 'success' }}
+    if: ${{ github.event.deployment_status.state == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: Status
