@@ -3,24 +3,31 @@ name: deployment status test
 on: [workflow_dispatch, deployment_status]
 
 jobs:
-  tests_from_workflow_dispatch:
-    if: ${{ github.event.workflow_run == 'success' }} || ${{ github.event.workflow_run == 'failure' }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Status
-        env:
-          VERCEL_DEPLOYMENT_STATUS: ${{ toJson(github.event.deployment_status) }}
-          TEST_VAR: true
-        if: env.TEST_VAR == true
-        run: echo TEST_VAR true
+  # tests_from_workflow_dispatch:
+  #   if: ${{ github.event.workflow_run == 'success' }} || ${{ github.event.workflow_run == 'failure' }}
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Status
+  #       env:
+  #         VERCEL_DEPLOYMENT_STATUS: ${{ toJson(github.event.deployment_status) }}
+  #         TEST_VAR: true
+  #       if: env.TEST_VAR == true
+  #       run: echo TEST_VAR true
 
-  tests_from_production_deployment:
-    if: ${{ github.event.deployment_status.state == 'success' }}
+  # tests_from_production_deployment:
+  #   if: ${{ github.event.deployment_status.state == 'success' }}
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Status
+  #       env:
+  #         VERCEL_DEPLOYMENT_STATUS: ${{ toJson(github.event.deployment_status) }}
+  #         TEST_VAR: false
+  #       if: env.TEST_VAR == false
+  #       run: echo TEST_VAR false
+  commom:
     runs-on: ubuntu-latest
     steps:
-      - name: Status
+      - name: state
         env:
           VERCEL_DEPLOYMENT_STATUS: ${{ toJson(github.event.deployment_status) }}
-          TEST_VAR: false
-        if: env.TEST_VAR == false
-        run: echo TEST_VAR false
+        run: echo $VERCEL_DEPLOYMENT_STATUS
