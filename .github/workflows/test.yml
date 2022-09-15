@@ -11,7 +11,7 @@ jobs:
         env:
           VERCEL_DEPLOYMENT_STATUS: ${{ toJson(github.event.deployment_status) }}
           TEST_VAR: true
-        if: $TEST_VAR == true
+        if: env.TEST_VAR == true
         run: echo TEST_VAR true
 
   tests_from_production_deployment:
@@ -22,5 +22,5 @@ jobs:
         env:
           VERCEL_DEPLOYMENT_STATUS: ${{ toJson(github.event.deployment_status) }}
           TEST_VAR: false
-        if: $TEST_VAR == false
+        if: env.TEST_VAR == false
         run: echo TEST_VAR false
