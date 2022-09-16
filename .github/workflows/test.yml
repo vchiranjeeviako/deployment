@@ -3,7 +3,7 @@ name: deployment status test
 on:
   workflow_dispatch:
 
-  deployment_status:
+  deployment:
 
 jobs:
   # tests_from_workflow_dispatch:
