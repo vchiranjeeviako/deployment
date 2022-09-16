@@ -27,20 +27,20 @@ jobs:
   #         TEST_VAR: false
   #       if: env.TEST_VAR == false
   #       run: echo TEST_VAR false
-  commom:
+  common:
     if: ${{ github.event.deployment_status.state == 'success' }} && ${{ github.event.deployment_status.environment == 'Production' }}
     runs-on: ubuntu-latest
     steps:
       - name: state
         env:
-          VERCEL_DEPLOYMENT_STATUS: ${{ toJson(github.event) }}
+          VERCEL_DEPLOYMENT_STATUS: ${{ toJson(github.event.deployment_status) }}
         run: echo $VERCEL_DEPLOYMENT_STATUS
 
-  work:
-    if: ${{ github.event.deployment_status.state == null }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: state
-        env:
-          VERCEL_DEPLOYMENT_STATUS: ${{ toJson(github.event) }}
-        run: echo $VERCEL_DEPLOYMENT_STATUS
+  # work:
+  #   if: ${{ github.event.deployment_status.state == null }}
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: state
+  #       env:
+  #         VERCEL_DEPLOYMENT_STATUS: ${{ toJson(github.event) }}
+  #       run: echo $VERCEL_DEPLOYMENT_STATUS
